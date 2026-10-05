@@ -1,0 +1,5 @@
+*.jar
+*.tar.gz
+whitelist.json
+ops.json
+__pycache__/
