@@ -8,8 +8,10 @@ vanilla server jar.
 
 ## Server URL
 
-TBD - set up a [playit.gg](https://playit.gg/) tunnel like the sibling
-servers once it's time to let Milo connect from outside the LAN.
+- pgsql-molecular.tun.ply.gg:20394
+
+(tunneled via [playit.gg](https://playit.gg) - no router port forwarding
+needed, same as the sibling servers)
 
 ## What is this
 
