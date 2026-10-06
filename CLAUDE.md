@@ -26,7 +26,9 @@ towards boring and safe:
 - Keep `white-list=true` / `enforce-whitelist=true` in `server.properties` -
   never suggest opening it up as a public/open server.
 - `pvp=false` and `difficulty=easy` are deliberate starting defaults, not
-  placeholders - don't "fix" them without being asked.
+  placeholders - don't "fix" them without being asked. Same for the
+  `keep_inventory=true` / `mob_griefing=false` gamerules set by
+  `just apply-gamerules`.
 - Don't add gameplay-altering commands/datapacks/cheats without asking first
   - the point is vanilla survival, not giving Milo infinite diamonds.
 - Treat `delete-chunk` and `restore-world` as destructive: confirm with the

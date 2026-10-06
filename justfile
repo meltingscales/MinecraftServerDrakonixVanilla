@@ -66,6 +66,18 @@ setup-backups:
     sudo systemctl daemon-reload
     sudo systemctl enable --now minecraftserverbackup-drakonixvanilla.timer
 
+# Gamerules live in the world's level.dat, not server.properties, so this
+# recipe is their "template" - re-run it after a fresh world or restore-world.
+# Idempotent. Reads rcon.password from the live server.properties via sudo.
+# apply the curated difficulty + gamerules to the live world over RCON
+apply-gamerules:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    for cmd in "difficulty easy" "gamerule keep_inventory true" "gamerule mob_griefing false"; do
+        sudo sed -n 's/^rcon.password=//p' "{{server_dir}}/server.properties" \
+            | python3 scripts/rcon.py --port {{rcon_port}} --password-file /dev/stdin $cmd
+    done
+
 enable:
     sudo systemctl enable {{service}}
 

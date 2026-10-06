@@ -104,9 +104,20 @@ then `just install-whitelist` to push it to the live server and reload it.
 (`/op <name>` via `just rcon`, or edit the file directly) rather than
 committing it.
 
+## Gamerules
+
+Gamerules live in the world's `level.dat`, not `server.properties`, so they
+can't be templated there. `just apply-gamerules` sets them over RCON instead
+(idempotent - re-run after a fresh world or `restore-world`):
+
+- `difficulty easy`
+- `keep_inventory true` - dying doesn't wipe a beginner's inventory
+- `mob_griefing false` - creepers/endermen can't wreck builds
+
 ## Operating
 
 ```
+just apply-gamerules  # (re)apply difficulty + gamerules to the live world
 just logs            # tail the systemd journal
 just rcon             # interactive console
 just ping             # liveness check (Server List Ping)
